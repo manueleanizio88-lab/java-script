@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu primeiro java script</title>
+</head>
+<body>
+
+    <h1>Seu Primeiro "Olá, Mundo!" em JavaScript</h1>
+
+    <button onclick="exibirMensagemBoasVindas()">Clique aqui</button>
+    <button onclick="perguntarNome()">Dizer meu nome</button>
+
+
+    <script>
+         window.alert('Olá, mundo! Este é o meu primeiro script JS!');
+
+function exibirMensagemBoasVindas() {
+    window.alert('Você clicou no botão! Olá de novo!');
+}
+
+function perguntarNome() {
+    let nomeDoUsuario = window.prompt('Por favor, digite o seu nome:');
+    window.alert(`Olá, ${nomeDoUsuario}! É um prazer te conhecer através desta página!`);
+}
+    </script>
+
+
+ 
+    
