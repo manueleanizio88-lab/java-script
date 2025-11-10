@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamento do Novo App</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #216a9a;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prepare-se para a Inovação!</h1>
+        <p>
+            Estamos prestes a lançar algo incrível que vai transformar sua experiência. Fique por dentro de todas as novidades!
+        </p>
+        <button id="discoverButton" onclick="handleDiscoverClick()">Descobrir Mais</button>
+    </div>
+
+    <!-- AQUI É ONDE SEU CÓDIGO JAVASCRIPT DEVE SER INSERIDO -->
+    <script>
+       // Desafio 1: Saudação de Boas-Vindas Automática
+        alert("Bem-vindo(a) ao lançamento do nosso novo app! " + "Slogan: " + SLOGAN_APP);
+
+        // Desafio 2 & 3: Botão Interativo "Descobrir Mais" e Saudação Personalizada*/
+        function handleDiscoverClick() {
+
+            let userName = prompt("Qual é o seu nome?");
+
+            if (userName === null || userName.trim() === "") {
+                userName = "Visitante";
+            } else {
+                userName = userName.trim();
+            }
+            const welcomeMessage = `Olá, ${userName}! Que bom ter você aqui. Prepare-se para o futuro! Obrigado pelo seu interesse!`;
+
+            //mensagem no alerta (Desafio 2 e 3)
+            alert(welcomeMessage);
+        }
+        
+    </script>
+       
+    </script>
+</body>
+</html>
