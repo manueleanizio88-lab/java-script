@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+ Uso incorreto de <span> como botão/menu clicável
+    <span onclick="goToHome()">Home</span>
+
+    Botão com tamanho de fonte muito pequeno
+    <button style="font-size: 8px;">Inscrever</button>
+
+    Falta de hierarquia semântica (sem <header>, <nav>, <main>, <footer>)
+    Prejudica navegação 
+
+    Falta de labels nos campos do formulário
+    <input type="text" name="nome">
+    <input type="email" name="email">
+    Usuários com leitores de tela não sabem o que cada campo significa.
+
+
+
+     html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site Exemplo</title>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.jpg">
+        <div class="menu">
+            <span onclick="goToHome()">Home</span>
+            <span onclick="goToProducts()">Produtos</span>
+            <span onclick="goToContact()">Contato</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <p style="color: lightgray; background-color: white;">
+            Bem-vindo ao nosso site! Oferecemos os melhores produtos.
+        </p>
+        
+        <div class="video-container">
+            <video src="promocao.mp4" autoplay controls></video>
+        </div>
+        
+        <form>
+            <input type="text" name="nome">
+            <input type="email" name="email">
+            <input type="submit" value="Enviar">
+        </form>
+        
+        <div class="newsletter">
+            <p>Assine nossa newsletter:</p>
+            <input type="email">
+            <button style="font-size: 8px;">Inscrever</button>
+        </div>
+    </div>
+    
+    <script>
+        function goToHome() { window.location = "/home"; }
+        function goToProducts() { window.location = "/products"; }
+        function goToContact() { window.location = "/contact"; }
+    </script>
+</body>
+</html>
+
+
+Objetivo
+Identificar e corrigir problemas de acessibilidade em um trecho de código HTML fornecido.Materiais Necessários
+Computador com acesso à internet
+Editor de código (VS Code, Sublime Text, ou similar)
+Navegador web
+
+
+Analise o seguinte código HTML e identifique pelo menos 8 problemas de acessibilidade:
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loja Online</title>
+</head>
+<body>
+    <div class="header">
+        <img src="banner.jpg">
+        <div class="nav">
+            <span onclick="navegar('home')">Início</span>
+            <span onclick="navegar('produtos')">Produtos</span>
+            <span onclick="navegar('sobre')">Sobre</span>
+            <span onclick="navegar('ajuda')">Ajuda</span>
+        </div>
+    </div>
+
+    <div class="main">
+        <h2>Produtos em Destaque</h2>
+        
+        <div class="produto">
+            <img src="produto1.jpg">
+            <p>Smartphone XYZ - R$ 1.299,00</p>
+            <button style="color: white; background-color: blue;">Comprar</button>
+        </div>
+        
+        <div class="produto">
+            <img src="produto2.jpg">
+            <p>Tablet ABC - R$ 899,00</p>
+            <button style="color: white; background-color: blue;">Comprar</button>
+        </div>
+        
+        <div class="video-promocional">
+            <video src="promocao.mp4" autoplay loop muted></video>
+        </div>
+        
+        <div class="form-contato">
+            <p>Entre em contato:</p>
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="E-mail">
+            <textarea placeholder="Mensagem"></textarea>
+            <input type="submit" value="Enviar">
+        </div>
+        
+        <div class="news">
+            <h3>Notícias</h3>
+            <p style="font-size: 10px;">Confira nossas últimas novidades e promoções especiais.</p>
+            <a href="#">Leia mais</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 Loja Online. Todos os direitos reservados.</p>
+    </div>
+
+    <script>
+        function navegar(pagina) {
+            window.location = "/" + pagina;
+        }
+    </script>
+</body>
+</html>
+
+
+<img src="banner.jpg">
+Imagens sem Atributo alt
+
+<div class="nav"></div>
+Uso Incorreto para Navegação
+
+Uso de <span> para Links/Botões
+<span onclick=""></span>
