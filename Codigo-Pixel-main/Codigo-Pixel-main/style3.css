@@ -1,0 +1,539 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.banner {
+    width: 100%;
+    min-height: 100vh;
+    background:
+        linear-gradient(135deg, rgba(6, 22, 94, 0.8) 0%, rgba(38, 17, 160, 0.8) 100%),
+        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.main-title {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.description {
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ESTILOS DA SEÇÃO DE SERVIÇOS */
+.services-section {
+    width: 100%;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, rgba(6, 22, 94, 0.95) 0%, rgba(38, 17, 160, 0.95) 100%);
+    color: white;
+    text-align: center;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.section-description {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.services-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* Espaço entre os cards */
+    flex-wrap: wrap;
+    /* Permite que os cards quebrem para a próxima linha em telas menores */
+}
+
+.service-card {
+    background-color: rgba(25, 10, 80, 0.7);
+    /* Cor de fundo dos cards, um pouco mais escura que o fundo principal */
+    border-radius: 15px;
+    padding: 40px;
+    flex: 1 1 300px;
+    /* Flexível, com largura base de 300px */
+    max-width: 350px;
+    /* Largura máxima para os cards */
+    text-align: left;
+    /* Conteúdo interno alinhado à esquerda */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.icon-wrapper {
+    background-color: #4a3eef;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.icon-wrapper i {
+    font-size: 28px;
+    color: white;
+}
+
+.service-card h3 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.service-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* Responsividade para a seção de serviços */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 40px;
+    }
+
+    .section-description {
+        font-size: 16px;
+        margin-bottom: 40px auto;
+    }
+
+    .service-card {
+        flex: 1 1 45%;
+        /* Duas colunas em telas médias */
+    }
+
+    .services-cards-wrapper {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 60px 15px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .section-description {
+        font-size: 15px;
+        margin-bottom: 30px auto;
+    }
+
+    .service-card {
+        flex: 1 1 100%;
+        /* Uma coluna em telas pequenas */
+        max-width: 400px;
+        /* Limita a largura do card mesmo em coluna única */
+        margin: 0 auto;
+        /* Centraliza o card */
+    }
+
+    .services-cards-wrapper {
+        gap: 20px;
+    }
+
+    .service-card h3 {
+        font-size: 22px;
+    }
+
+    .service-card p {
+        font-size: 15px;
+    }
+}
+
+/* NOVOS ESTILOS PARA A SEÇÃO DE ESTATÍSTICAS */
+.stats-section {
+    background: linear-gradient(135deg, rgba(6, 22, 94, 0.95) 0%, rgba(38, 17, 160, 0.95) 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.stats-container {
+    max-width: 1200px; /* Largura máxima do container para não esticar demais */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+    justify-content: space-around; /* Distribui os itens com espaço ao redor */
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.stat-item {
+    flex: 1; /* Permite que os itens cresçam e encolham */
+    min-width: 200px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.stat-number {
+    font-size: 4.5em;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 5px;
+    color: #ffffff;
+  
+}
+
+.stat-description {
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #ffffff;
+    margin-top: 0;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 60px 15px;
+    }
+    .stat-item {
+        min-width: 45%;
+    }
+    .stat-number {
+        font-size: 3.5em;  
+    }
+    .stat-description {
+        font-size: 1em;  
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-section {
+        padding: 40px 10px;
+    }
+    .stats-container {
+        flex-direction: column; /* Empilha os itens verticalmente em telas muito pequenas */
+        gap: 40px;
+    }
+    .stat-item {
+        min-width: 100%; 
+    }
+    .stat-number {
+        font-size: 3em;  
+    }
+    .stat-description {
+        font-size: 0.9em;  
+    }
+}
+
+ /* NOVOS ESTILOS PARA A SEÇÃO DE DEPOIMENTOS */
+ .testimonials-section {
+    padding: 80px 0; 
+    background: linear-gradient(135deg, rgba(6, 22, 94, 0.95) 0%, rgba(38, 17, 160, 0.95) 100%);
+    color: #ffffff; 
+ }
+.testimonials-section .container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    text-align: center; 
+}
+
+.testimonials-section-title {
+    font-size: 3em; 
+    font-weight: 700; 
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.testimonials-section-subtitle {
+    font-size: 1.1em;
+    color: #cccccc; 
+    margin-bottom: 50px; 
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Contêiner do Carrossel */
+.carousel-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden; /* Esconde o conteúdo que transborda horizontalmente */
+    position: relative;
+    padding-bottom: 20px; 
+}
+
+.testimonial-cards-wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 20px; 
+    scroll-snap-type: x mandatory; /* Habilita o "snap" de rolagem para os cartões */
+    -webkit-overflow-scrolling: touch; /* Suaviza a rolagem em dispositivos iOS */
+    overflow-x: auto; /* Permite a rolagem horizontal */
+    justify-content: flex-start; /* Alinha os cartões ao início para a rolagem */
+
+    -ms-overflow-style: none;  /* Esconder para IE e Edge (legado) */
+    scrollbar-width: none;  /* Esconder para Firefox */
+}
+
+
+/* Cartão de Depoimento Individual */
+.testimonial-card {
+    background-color: #1a1b3f; 
+    border-radius: 15px; 
+    padding: 30px;
+    text-align: left;
+    flex-shrink: 0; /* Impede que o cartão encolha */
+    width: calc((100% / 3) - 20px); /* Calcula a largura para 3 cartões com espaçamento */
+    max-width: 380px; 
+    box-sizing: border-box; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    scroll-snap-align: center; /* Ponto de "snap" para cada cartão (centraliza ao rolar) */
+}
+
+/* Cabeçalho do Cartão (Avatar, Nome, Estrelas) */
+.testimonial-card .card-header { /* Especifica para evitar conflito com card-header de outras seções, se houver */
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20px;
+}
+
+.testimonial-card .avatar {
+    width: 50px;
+    height: 60px;
+    border-radius: 80%; 
+    margin-right: 15px;
+    object-fit: cover; /* Garante que a imagem preencha o círculo */
+    border: 2px solid #5d5e75; 
+}
+
+.testimonial-card .user-name {
+    font-size: 1.2em;
+    font-weight: 600; 
+    margin: 0;
+    color: #ffffff;
+}
+
+.testimonial-card .user-handle {
+    font-size: 0.9em;
+    color: #a0a0b8; 
+    margin: 0;
+}
+
+.testimonial-card .stars {
+    display: flex;
+    font-size: 1.3em; 
+    margin-left: auto; 
+    gap: 3px;
+}
+
+.testimonial-card .star {
+    color: #8a8af8; 
+}
+
+.testimonial-card .star.empty {
+    color: #5d5e75;  
+}
+
+.testimonial-text {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #cccccc; 
+}
+
+/* Paginação do Carrossel (Pontos) */
+.carousel-pagination {
+    display: flex;
+    justify-content: center; 
+    margin-top: 50px;
+    gap: 10px; 
+}
+
+.carousel-pagination .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background-color: #5d5e75; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.carousel-pagination .dot.active {
+    background-color: #ffffff; 
+    
+}
+.testimonial-card .star {
+    color: #8a8af8; 
+}
+
+.testimonial-card .star.empty {
+    color: #5d5e75; 
+}
+
+.testimonial-text {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #cccccc; 
+}
+
+/* Paginação do Carrossel (Pontos) */
+.carousel-pagination {
+    display: flex;
+    justify-content: center; 
+    margin-top: 50px;
+    gap: 10px; 
+}
+
+.carousel-pagination .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background-color: #5d5e75; /* Cor dos pontos inativos */
+    cursor: pointer; /* Indica que são clicáveis (para JS) */
+    transition: background-color 0.3s ease; /* Transição suave de cor */
+}
+
+.carousel-pagination .dot.active {
+    background-color: #ffffff; 
+}
+
+/* Responsividade da Seção de Depoimentos */
+@media (max-width: 1200px) {
+    .testimonial-card {
+        width: calc(50% - 20px); /* Em telas médias (tablets), mostra 2 cartões por vez */
+        max-width: 500px; /* Permite que os cartões sejam um pouco mais largos */
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-section-title {
+        font-size: 2.5em; /* Reduz o tamanho do título em telas menores */
+    }
+    .testimonials-section-subtitle {
+        font-size: 1em; /* Reduz o tamanho do subtítulo */
+    }
+    .testimonial-card {
+        width: calc(100% - 40px); /* Em telas pequenas (celulares), mostra 1 cartão por vez */
+        max-width: 450px; /* Largura máxima para garantir que não fiquem muito grandes */
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-section-title {
+        font-size: 2em;
+    }
+    .testimonials-section {
+        padding: 50px 0; /* Reduz o padding da seção */
+    }
+    .testimonial-card {
+        width: calc(100% - 30px); /* Ajusta a largura para telas muito pequenas */
+    }
+    .carousel-pagination {
+        margin-top: 30px; /* Reduz o espaçamento da paginação */
+    }
+}
