@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="acessibilidade.css">
+    <title>Login Acessível - Demonstração</title>
+</head>
+<body>
+    <!-- 
+    BARRA DE ACESSIBILIDADE: Esta barra fornece controles para ajustar a experiência
+    de acordo com as necessidades do usuário.
+    -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Barra de acessibilidade">
+        <div class="accessibility-title">Acessibilidade:</div>
+        <div class="accessibility-controls">
+            <button class="accessibility-btn" id="increase-font" aria-label="Aumentar tamanho da fonte">
+                A+ Aumentar Fonte
+            </button>
+            <button class="accessibility-btn" id="decrease-font" aria-label="Diminuir tamanho da fonte">
+                A- Diminuir Fonte
+            </button>
+            <button class="accessibility-btn" id="high-contrast" aria-label="Ativar alto contraste">
+                Alto Contraste
+            </button>
+            <button class="accessibility-btn" id="normal-view" aria-label="Voltar à visualização normal">
+                Visualização Normal
+            </button>
+        </div>
+    </div>
+    
+    <!-- 
+    O main é o conteúdo principal da página. O atributo tabindex="-1"
+    no h1 permite que seja focável via JavaScript para redirecionamento.
+    -->
+    <main class="container">
+        <header>
+            <h1 id="main-title" tabindex="-1">Login Acessível</h1>
+            <p class="subtitle">Uma demonstração de formulário de login com recursos de acessibilidade</p>
+        </header>
+        
+        <!-- 
+ 
+    Esta mensagem será mostrada quando o login for bem-sucedido.
+    O role="alert" faz com que leitores de tela anunciem imediatamente.
+    -->
+        <div class="success-message" id="success-message" role="alert" aria-live="assertive">
+            Login realizado com sucesso! Redirecionando...
+        </div>
+        
+        <!-- 
+
+    CARTÃO DE LOGIN
+    O cartão contém o formulário de login com todos os
+    atributos de acessibilidade necessários.
+    -->
+        <div class="login-card">
+            <form id="login-form" novalidate>
+                <!-- 
+                GRUPO DE USUÁRIO
+                O campo de usuário tem label associado, é obrigatório
+                e tem mensagem de erro associada via aria-describedby.
+                -->
+                <div class="form-group">
+                    <label for="username" class="required">Usuário</label>
+                    <div class="input-wrapper">
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               aria-required="true"
+                               aria-describedby="username-error"
+                               placeholder="Digite seu nome de usuário">
+                    </div>
+                    <div id="username-error" class="error-message" role="alert" aria-live="polite">
+                        Por favor, informe seu nome de usuário.
+                    </div>
+                </div>
+                
+                <!-- 
+                GRUPO DE SENHA
+                O campo de senha tem botão para mostrar/ocultar senha
+                e mensagem de erro associada.
+                -->
+                <div class="form-group">
+                    <label for="password" class="required">Senha</label>
+                    <div class="input-wrapper">
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               aria-required="true"
+                               aria-describedby="password-error"
+                               placeholder="Digite sua senha">
+                        <button type="button" 
+                                class="password-toggle" 
+                                id="toggle-password"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false">
+                            Mostrar
+                        </button>
+                    </div>
+                    <div id="password-error" class="error-message" role="alert" aria-live="polite">
+                        Por favor, informe sua senha.
+                    </div>
+                </div>
+                
+                <!-- 
+                BOTÃO DE SUBMIT
+                O botão de login tem um texto claro e feedback visual ao focar.
+                -->
+                <button type="submit" class="login-btn" id="login-button">
+                    Entrar
+                </button>
+                
+                <!-- 
+                LINK ESQUECI SENHA
+                Um link para recuperação de senha, importante para usuários
+                que podem ter dificuldades para lembrar.
+                -->
+                <a href="#recuperar-senha" class="forgot-password" id="forgot-password">
+                    Esqueci minha senha
+                </a>
+            </form>
+        </div>
+        
+        <!-- 
+    INFORMAÇÕES SOBRE A ACESSIBILIDADE PARA GUIARRRR VOCÊSSS 
+    -->
+        <div class="login-card" style="margin-top: 30px;">
+            <h2 style="margin-bottom: 15px;">Recursos de Acessibilidade Implementados</h2>
+            <ul style="padding-left: 20px;">
+                <li>Navegação completa por teclado (Tab, Shift+Tab, Enter)</li>
+                <li>Controles para ajustar tamanho da fonte</li>
+                <li>Modo de alto contraste para deficientes visuais</li>
+                <li>Textos descritivos para leitores de tela (aria-label, alt)</li>
+                <li>Foco visível em todos os elementos interativos</li>
+                <li>Mensagens de erro claras e associadas aos campos</li>
+                <li>HTML semântico com landmarks (main, header, footer)</li>
+            </ul>
+        </div>
+    </main>
+    
+    <!-- =
+    RODAPÉ: O rodapé contém informações sobre direitos autorais
+    e um link para mais informações sobre acessibilidade.
+    -->
+    <footer>
+        <p>© 2023 Demonstração de Acessibilidade Web. Todos os direitos reservados.</p>
+        <p>Esta página é uma demonstração educacional sobre acessibilidade na web.</p>
+        <p>
+            <a href="https://www.w3.org/WAI/" 
+               target="_blank" 
+               aria-label="Saiba mais sobre acessibilidade web no site da W3C">
+                Saiba mais sobre acessibilidade web
+            </a>
+        </p>
+    </footer>
+    
+  <script src="acessibilidade.js"></script>
+</body>
+</html>

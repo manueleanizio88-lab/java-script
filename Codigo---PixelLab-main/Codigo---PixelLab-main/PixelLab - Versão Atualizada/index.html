@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>PixelLab - Design & Desenvolvimento</title>
+</head>
+<body>
+    
+    <!-- Skip Link para acessibilidade -->
+    <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
+
+    <!-- Barra de acessibilidade fixa no topo -->
+    <div class="accessibility-bar" id="accessibilityBar">
+        <button id="fontIncrease" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="fontDecrease" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="highContrast" aria-label="Ativar modo alto contraste">☼</button>
+    </div>
+
+    <!-- Banner principal -->
+    <div class="banner">
+        <header class="header">
+            <div class="logo">PixelLab</div>
+            
+            <!-- Botão do menu hamburguer -->
+            <button class="hamburger" id="hamburger" aria-label="Menu principal" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Menu de navegação principal -->
+            <nav class="menu" id="main-menu">
+                <ul class="menu-list">
+                    <li><a href="#" class="nav-link">Início</a></li>
+                    <li><a href="#servico" class="nav-link">Serviços</a></li>
+                    <li><a href="#numeros" class="nav-link">Números</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Conteúdo principal da página -->
+        <main class="content" id="main-content">
+            <h1 class="main-title">PixelLab</h1>
+            <p class="description">Transformamos suas ideias em experiências digitais incríveis com design responsivo e desenvolvimento de alta qualidade.</p>
+            <a href="#servico" class="cta-button">Conheça nossos serviços</a>
+        </main>
+    </div>
+
+    <!-- Seção de Serviços -->
+    <section id="servico" class="services-section">
+        <div class="services-container">
+            <h2 class="section-title">Serviços</h2>
+            <p class="section-description">Oferecemos soluções completas em design e desenvolvimento para impulsionar sua presença digital.</p>
+        </div>
+
+        <div class="services-cards-wrapper">
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Design Responsivo</h3>
+                <p>Criamos designs que se adaptam perfeitamente a qualquer dispositivo, garantindo a melhor experiência para seus usuários.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Prototipagem Rápida</h3>
+                <p>Desenvolvemos protótipos interativos para validar suas ideias antes do desenvolvimento final.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Colaboração</h3>
+                <p>Trabalhamos em estreita colaboração com sua equipe para garantir que o resultado final atenda todas as expectativas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Estatísticas -->
+    <section id="numeros" class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">+150</div>
+                <p class="stat-description">Projetos Criados</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+5</div>
+                <p class="stat-description">anos de Mercado</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+300</div>
+                <p class="stat-description">Clientes Satisfeitos</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <p class="stat-description">de Aprovação</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section id="depoimentos" class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-section-title">Depoimentos</h2>
+            <p class="testimonials-section-subtitle">Veja o que nossos clientes dizem sobre nossos serviços e a qualidade do nosso trabalho.</p>
+
+            <div class="carousel-container">
+                <div class="testimonial-cards-wrapper" id="carousel-wrapper">
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="avatar"></div>
+                            <div class="user-details">
+                                <h3 class="user-name">Kamila</h3>
+                                <p class="user-handle">@kamila</p>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            A PixelLab transformou completamente nosso site. O design é incrível e a usabilidade melhorou significativamente. Recomendo muito!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="avatar"></div>
+                            <div class="user-details">
+                                <h3 class="user-name">João</h3>
+                                <p class="user-handle">@joão</p>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            Trabalhei com várias agências, mas a PixelLab se destacou pela atenção aos detalhes e pelo compromisso com os prazos. Excelente trabalho!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="avatar"></div>
+                            <div class="user-details">
+                                <h3 class="user-name">Loise</h3>
+                                <p class="user-handle">@loise</p>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            O redesign do nosso e-commerce aumentou significativamente as conversões. A equipe da PixelLab foi muito profissional em todo o processo.
+                        </p>
+                    </div>
+                    
+                    <!-- Cards adicionais para o carrossel -->
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="avatar"></div>
+                            <div class="user-details">
+                                <h3 class="user-name">Ana Clara</h3>
+                                <p class="user-handle">@anaclara</p>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            Excelente trabalho! A equipe foi muito atenciosa e o resultado superou minhas expectativas. Recomendo a todos!
+                        </p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="avatar"></div>
+                            <div class="user-details">
+                                <h3 class="user-name">Carlos</h3>
+                                <p class="user-handle">@carlos_dev</p>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            Profissionalismo e qualidade excepcionais. Entregaram tudo dentro do prazo e com muita competência.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-pagination" id="carousel-pagination">
+                <!-- Os dots serão gerados pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column brand-column">
+                <h3 class="footer-logo">PixelLab</h3>
+                <p class="footer-description">Transformando ideias em experiências digitais memoráveis.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column links-column">
+                <h4 class="footer-heading">Institucional</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#servico">Serviços</a></li>
+                    <li><a href="#numeros">Números</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-column">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-contact">
+                    <li>Segunda - Sábado (8h - 17h)</li>
+                    <li>Domingo (9h - 16h)</li>
+                    <li>pixellab@email.com</li>
+                    <li>(84) 98877-6655</li>
+                </ul>
+            </div>
+
+            <div class="footer-column newsletter-column">
+                <h4 class="footer-heading">Cadastre-se</h4>
+                <p class="newsletter-description">Cadastre para receber novidades e ofertas exclusivas</p>
+                <form action="#" class="newsletter-form">
+                    <input type="email" placeholder="Digite seu email" aria-label="Digite seu email para newsletter">
+                    <button type="submit" aria-label="Enviar email"><i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

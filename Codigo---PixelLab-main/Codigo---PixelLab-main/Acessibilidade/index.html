@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Acessível - Demonstração</title>
+    <style>
+        /* 
+        ===============================
+        RESET E ESTILOS GERAIS
+        ===============================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        
+        /* 
+        ===============================
+        BARRA DE ACESSIBILIDADE
+        ===============================
+        */
+        .accessibility-bar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accessibility-title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .accessibility-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .accessibility-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        
+        .accessibility-btn:hover,
+        .accessibility-btn:focus {
+            background-color: #2980b9;
+            outline: 2px solid #fff;
+        }
+        
+        /* 
+        ===============================
+        ESTILOS PARA ALTO CONTRASTE
+        ===============================
+        */
+        .high-contrast {
+            background-color: black !important;
+            color: yellow !important;
+        }
+        
+        .high-contrast .container,
+        .high-contrast .login-card,
+        .high-contrast .accessibility-bar {
+            background-color: black !important;
+            color: yellow !important;
+            border: 2px solid yellow !important;
+        }
+        
+        .high-contrast a {
+            color: #ffff00 !important;
+        }
+        
+        .high-contrast button {
+            background-color: yellow !important;
+            color: black !important;
+            border: 2px solid white !important;
+        }
+        
+        /* 
+        ===============================
+        ESTILOS PARA TEXTO GRANDE
+        ===============================
+        */
+        .large-text {
+            font-size: 1.3rem !important;
+        }
+        
+        .large-text h1 {
+            font-size: 2.2rem !important;
+        }
+        
+        .large-text .accessibility-btn,
+        .large-text .login-btn,
+        .large-text input {
+            font-size: 1.2rem !important;
+            padding: 12px !important;
+        }
+        
+        /* 
+        ===============================
+        LAYOUT PRINCIPAL
+        ===============================
+        */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        /* 
+        ===============================
+        CARTÃO DE LOGIN
+        ===============================
+        */
+        .login-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #3498db;
+            outline: 3px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .password-toggle:focus {
+            outline: 2px solid #3498db;
+            border-radius: 3px;
+        }
+        
+        /* 
+        ===============================
+        BOTÕES E LINKS
+        ===============================
+        */
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover,
+        .login-btn:focus {
+            background-color: #27ae60;
+            outline: 3px solid rgba(46, 204, 113, 0.4);
+        }
+        
+        .login-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .forgot-password:hover,
+        .forgot-password:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+        
+        /* 
+        ===============================
+        MENSAGENS DE FEEDBACK
+        ===============================
+        */
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* 
+        ===============================
+        RODAPÉ
+        ===============================
+        */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* 
+        ===============================
+        RESPONSIVIDADE
+        ===============================
+        */
+        @media (max-width: 768px) {
+            .accessibility-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .accessibility-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .login-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .accessibility-controls {
+                flex-direction: column;
+            }
+            
+            .accessibility-btn {
+                width: 100%;
+            }
+        }
+        
+        /* 
+        ===============================
+        ANIMAÇÕES REDUZIDAS
+        ===============================
+        */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    ====================================
+    BARRA DE ACESSIBILIDADE
+    ====================================
+    Esta barra fornece controles para ajustar a experiência
+    de acordo com as necessidades do usuário.
+    -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Barra de acessibilidade">
+        <div class="accessibility-title">Acessibilidade:</div>
+        <div class="accessibility-controls">
+            <button class="accessibility-btn" id="increase-font" aria-label="Aumentar tamanho da fonte">
+                A+ Aumentar Fonte
+            </button>
+            <button class="accessibility-btn" id="decrease-font" aria-label="Diminuir tamanho da fonte">
+                A- Diminuir Fonte
+            </button>
+            <button class="accessibility-btn" id="high-contrast" aria-label="Ativar alto contraste">
+                Alto Contraste
+            </button>
+            <button class="accessibility-btn" id="normal-view" aria-label="Voltar à visualização normal">
+                Visualização Normal
+            </button>
+        </div>
+    </div>
+    
+    <!-- 
+    ====================================
+    CONTEÚDO PRINCIPAL
+    ====================================
+    O main é o conteúdo principal da página. O atributo tabindex="-1"
+    no h1 permite que seja focável via JavaScript para redirecionamento.
+    -->
+    <main class="container">
+        <header>
+            <h1 id="main-title" tabindex="-1">Login Acessível</h1>
+            <p class="subtitle">Uma demonstração de formulário de login com recursos de acessibilidade</p>
+        </header>
+        
+        <!-- 
+        ====================================
+    MENSAGEM DE SUCESSO (OCULTA INICIALMENTE)
+    ====================================
+    Esta mensagem será mostrada quando o login for bem-sucedido.
+    O role="alert" faz com que leitores de tela anunciem imediatamente.
+    -->
+        <div class="success-message" id="success-message" role="alert" aria-live="assertive">
+            Login realizado com sucesso! Redirecionando...
+        </div>
+        
+        <!-- 
+        ====================================
+    CARTÃO DE LOGIN
+    ====================================
+    O cartão contém o formulário de login com todos os
+    atributos de acessibilidade necessários.
+    -->
+        <div class="login-card">
+            <form id="login-form" novalidate>
+                <!-- 
+                GRUPO DE USUÁRIO
+                O campo de usuário tem label associado, é obrigatório
+                e tem mensagem de erro associada via aria-describedby.
+                -->
+                <div class="form-group">
+                    <label for="username" class="required">Usuário</label>
+                    <div class="input-wrapper">
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               aria-required="true"
+                               aria-describedby="username-error"
+                               placeholder="Digite seu nome de usuário">
+                    </div>
+                    <div id="username-error" class="error-message" role="alert" aria-live="polite">
+                        Por favor, informe seu nome de usuário.
+                    </div>
+                </div>
+                
+                <!-- 
+                GRUPO DE SENHA
+                O campo de senha tem botão para mostrar/ocultar senha
+                e mensagem de erro associada.
+                -->
+                <div class="form-group">
+                    <label for="password" class="required">Senha</label>
+                    <div class="input-wrapper">
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               aria-required="true"
+                               aria-describedby="password-error"
+                               placeholder="Digite sua senha">
+                        <button type="button" 
+                                class="password-toggle" 
+                                id="toggle-password"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false">
+                            Mostrar
+                        </button>
+                    </div>
+                    <div id="password-error" class="error-message" role="alert" aria-live="polite">
+                        Por favor, informe sua senha.
+                    </div>
+                </div>
+                
+                <!-- 
+                BOTÃO DE SUBMIT
+                O botão de login tem um texto claro e feedback visual ao focar.
+                -->
+                <button type="submit" class="login-btn" id="login-button">
+                    Entrar
+                </button>
+                
+                <!-- 
+                LINK ESQUECI SENHA
+                Um link para recuperação de senha, importante para usuários
+                que podem ter dificuldades para lembrar.
+                -->
+                <a href="#recuperar-senha" class="forgot-password" id="forgot-password">
+                    Esqueci minha senha
+                </a>
+            </form>
+        </div>
+        
+        <!-- 
+        ====================================
+    INFORMAÇÕES ADICIONAIS
+    ====================================
+    Informações sobre acessibilidade para educar o usuário.
+    -->
+        <div class="login-card" style="margin-top: 30px;">
+            <h2 style="margin-bottom: 15px;">Recursos de Acessibilidade Implementados</h2>
+            <ul style="padding-left: 20px;">
+                <li>Navegação completa por teclado (Tab, Shift+Tab, Enter)</li>
+                <li>Controles para ajustar tamanho da fonte</li>
+                <li>Modo de alto contraste para deficientes visuais</li>
+                <li>Textos descritivos para leitores de tela (aria-label, alt)</li>
+                <li>Foco visível em todos os elementos interativos</li>
+                <li>Mensagens de erro claras e associadas aos campos</li>
+                <li>HTML semântico com landmarks (main, header, footer)</li>
+            </ul>
+        </div>
+    </main>
+    
+    <!-- 
+    ====================================
+    RODAPÉ
+    ====================================
+    O rodapé contém informações sobre direitos autorais
+    e um link para mais informações sobre acessibilidade.
+    -->
+    <footer>
+        <p>© 2023 Demonstração de Acessibilidade Web. Todos os direitos reservados.</p>
+        <p>Esta página é uma demonstração educacional sobre acessibilidade na web.</p>
+        <p>
+            <a href="https://www.w3.org/WAI/" 
+               target="_blank" 
+               aria-label="Saiba mais sobre acessibilidade web no site da W3C">
+                Saiba mais sobre acessibilidade web
+            </a>
+        </p>
+    </footer>
+    
+    <!-- 
+    ====================================
+    SCRIPT DE FUNCIONALIDADES
+    ====================================
+    Todas as funcionalidades de acessibilidade são implementadas
+    aqui, com comentários explicativos.
+    -->
+    <script>
+        // Aguarda o carregamento completo da página
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ====================================
+            // VARIÁVEIS GLOBAIS
+            // ====================================
+            const body = document.body;
+            const increaseFontBtn = document.getElementById('increase-font');
+            const decreaseFontBtn = document.getElementById('decrease-font');
+            const highContrastBtn = document.getElementById('high-contrast');
+            const normalViewBtn = document.getElementById('normal-view');
+            const loginForm = document.getElementById('login-form');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const togglePasswordBtn = document.getElementById('toggle-password');
+            const successMessage = document.getElementById('success-message');
+            
+            // ====================================
+            // CONTROLES DE FONTE
+            // ====================================
+            
+            // Aumenta o tamanho da fonte em 20%
+            increaseFontBtn.addEventListener('click', function() {
+                body.classList.add('large-text');
+                body.classList.remove('high-contrast');
+                showTemporaryMessage('Tamanho da fonte aumentado. Pressione Ctrl+0 para voltar ao normal.');
+                // Move o foco para o título principal para feedback
+                document.getElementById('main-title').focus();
+            });
+            
+            // Diminui o tamanho da fonte (volta ao normal)
+            decreaseFontBtn.addEventListener('click', function() {
+                body.classList.remove('large-text');
+                body.classList.remove('high-contrast');
+                showTemporaryMessage('Tamanho da fonte redefinido.');
+            });
+            
+            // ====================================
+            // CONTROLES DE CONTRASTE
+            // ====================================
+            
+            // Ativa o modo de alto contraste
+            highContrastBtn.addEventListener('click', function() {
+                body.classList.add('high-contrast');
+                body.classList.remove('large-text');
+                showTemporaryMessage('Modo de alto contraste ativado.');
+            });
+            
+            // Volta à visualização normal
+            normalViewBtn.addEventListener('click', function() {
+                body.classList.remove('high-contrast');
+                body.classList.remove('large-text');
+                showTemporaryMessage('Visualização normal ativada.');
+            });
+            
+            // ====================================
+            // MOSTRAR/OCULTAR SENHA
+            // ====================================
+            
+            togglePasswordBtn.addEventListener('click', function() {
+                const isPasswordVisible = passwordInput.type === 'text';
+                
+                // Alterna entre tipo password e text
+                if (isPasswordVisible) {
+                    passwordInput.type = 'password';
+                    togglePasswordBtn.textContent = 'Mostrar';
+                    togglePasswordBtn.setAttribute('aria-label', 'Mostrar senha');
+                    togglePasswordBtn.setAttribute('aria-pressed', 'false');
+                } else {
+                    passwordInput.type = 'text';
+                    togglePasswordBtn.textContent = 'Ocultar';
+                    togglePasswordBtn.setAttribute('aria-label', 'Ocultar senha');
+                    togglePasswordBtn.setAttribute('aria-pressed', 'true');
+                }
+            });
+            
+            // ====================================
+            // VALIDAÇÃO DO FORMULÁRIO
+            // ====================================
+            
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Impede envio padrão
+                
+                // Reseta mensagens de erro anteriores
+                resetErrors();
+                
+                // Validação dos campos
+                let isValid = true;
+                
+                // Validação do usuário
+                if (!usernameInput.value.trim()) {
+                    showError(usernameInput, 'Por favor, informe seu nome de usuário.');
+                    isValid = false;
+                }
+                
+                // Validação da senha
+                if (!passwordInput.value.trim()) {
+                    showError(passwordInput, 'Por favor, informe sua senha.');
+                    isValid = false;
+                }
+                
+                // Se o formulário for válido, simula login bem-sucedido
+                if (isValid) {
+                    // Mostra mensagem de sucesso
+                    successMessage.style.display = 'block';
+                    
+                    // Foca na mensagem de sucesso para leitores de tela
+                    successMessage.focus();
+                    
+                    // Simula redirecionamento após 2 segundos
+                    setTimeout(function() {
+                        showTemporaryMessage('Login simulado com sucesso! Em uma aplicação real, você seria redirecionado.');
+                        loginForm.reset();
+                        successMessage.style.display = 'none';
+                        usernameInput.focus(); // Volta o foco para o primeiro campo
+                    }, 2000);
+                }
+            });
+            
+            // ====================================
+            // FUNÇÕES AUXILIARES
+            // ====================================
+            
+            // Mostra mensagem de erro para um campo específico
+            function showError(inputElement, message) {
+                const errorId = inputElement.id + '-error';
+                const errorElement = document.getElementById(errorId);
+                
+                // Adiciona classe de erro ao input
+                inputElement.classList.add('error');
+                inputElement.setAttribute('aria-invalid', 'true');
+                
+                // Mostra mensagem de erro
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                
+                // Foca no campo com erro
+                inputElement.focus();
+            }
+            
+            // Reseta todas as mensagens de erro
+            function resetErrors() {
+                const errorMessages = document.querySelectorAll('.error-message');
+                const inputs = document.querySelectorAll('input');
+                
+                errorMessages.forEach(function(error) {
+                    error.style.display = 'none';
+                    error.textContent = '';
+                });
+                
+                inputs.forEach(function(input) {
+                    input.classList.remove('error');
+                    input.setAttribute('aria-invalid', 'false');
+                });
+            }
+            
+            // Mostra mensagem temporária no topo da página
+            function showTemporaryMessage(message) {
+                // Cria elemento para a mensagem
+                const messageElement = document.createElement('div');
+                messageElement.setAttribute('role', 'status');
+                messageElement.setAttribute('aria-live', 'polite');
+                messageElement.style.cssText = `
+                    position: fixed;
+                    top: 70px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #3498db;
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 4px;
+                    z-index: 1000;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                    max-width: 90%;
+                    text-align: center;
+                `;
+                messageElement.textContent = message;
+                
+                // Adiciona ao body
+                document.body.appendChild(messageElement);
+                
+                // Remove após 3 segundos
+                setTimeout(function() {
+                    messageElement.remove();
+                }, 3000);
+            }
+            
+            // ====================================
+            // MELHORIAS DE NAVEGAÇÃO POR TECLADO
+            // ====================================
+            
+            // Adiciona navegação por teclado na barra de acessibilidade
+            const accessibilityButtons = document.querySelectorAll('.accessibility-btn');
+            
+            accessibilityButtons.forEach((button, index) => {
+                // Navegação com Tab entre botões
+                button.addEventListener('keydown', function(event) {
+                    // Enter ou Space ativa o botão
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        this.click();
+                    }
+                    
+                    // Setas direcionais navegam entre botões (para usuários que não usam Tab)
+                    if (event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        const nextButton = accessibilityButtons[index + 1] || accessibilityButtons[0];
+                        nextButton.focus();
+                    }
+                    
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        const prevButton = accessibilityButtons[index - 1] || accessibilityButtons[accessibilityButtons.length - 1];
+                        prevButton.focus();
+                    }
+                });
+            });
+            
+            // Foco no primeiro campo ao carregar a página
+            usernameInput.focus();
+            
+            // ====================================
+            // TRATAMENTO DO LINK "ESQUECI MINHA SENHA"
+            // ====================================
+            
+            document.getElementById('forgot-password').addEventListener('click', function(event) {
+                event.preventDefault();
+                showTemporaryMessage('Em uma aplicação real, você seria redirecionado para a página de recuperação de senha.');
+                
+                // Em uma aplicação real, aqui seria o redirecionamento
+                // window.location.href = '/recuperar-senha';
+            });
+            
+            // ====================================
+            // SUPORTE A TECLAS DE ATALHO
+            // ====================================
+            
+            document.addEventListener('keydown', function(event) {
+                // Alt+1 vai para o conteúdo principal
+                if (event.altKey && event.key === '1') {
+                    event.preventDefault();
+                    document.getElementById('main-title').focus();
+                }
+                
+                // Alt+2 vai para o formulário de login
+                if (event.altKey && event.key === '2') {
+                    event.preventDefault();
+                    usernameInput.focus();
+                }
+                
+                // Ctrl+0 volta ao tamanho normal da fonte
+                if (event.ctrlKey && event.key === '0') {
+                    event.preventDefault();
+                    body.classList.remove('large-text');
+                    body.classList.remove('high-contrast');
+                    showTemporaryMessage('Tamanho da fonte redefinido.');
+                }
+            });
+            
+            // ====================================
+            // INICIALIZAÇÃO FINAL
+            // ====================================
+            
+            // Anuncia recursos de acessibilidade para leitores de tela
+            // (apenas uma vez, quando a página carrega)
+            setTimeout(function() {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.classList.add('visually-hidden');
+                announcement.textContent = 'Página de login acessível carregada. Use Alt+1 para ir ao conteúdo principal ou Alt+2 para ir ao formulário de login.';
+                document.body.appendChild(announcement);
+                
+                // Remove após ser lido
+                setTimeout(function() {
+                    announcement.remove();
+                }, 1000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
