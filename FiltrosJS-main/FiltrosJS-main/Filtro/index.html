@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Filtro de Lista</title>
+</head>
+<script src="script.js"></script>
+</body>
+</html>
+<body>
+    <h1>🛒 Loja Virtual</h1>
+    
+    <div class="filtros">
+        <div class="filtro-grupo">
+            <label for="busca">🔍 Buscar produto:</label>
+            <input type="text" id="busca" placeholder="Digite o nome...">
+        </div>
+        
+        <div class="filtro-grupo">
+            <label for="categoria">📂 Categoria:</label>
+            <select id="categoria">
+                <option value="">Todas as categorias</option>
+                <!-- As opções serão geradas via JavaScript -->
+            </select>
+        </div>
+        
+        <div class="filtro-grupo">
+            <label for="preco-max">💰 Preço máximo: R$ <span id="preco-valor">5000</span></label>
+            <input type="range" id="preco-max" min="0" max="5000" value="5000" step="100">
+        </div>
+    </div>
+
+    <div class="contador">
+        Mostrando <span id="quantidade">0</span> produtos de <span id="total">0</span>
+    </div>
+
+    <div id="produtos-container">
+        <!-- Os produtos serão inseridos aqui via JavaScript -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
