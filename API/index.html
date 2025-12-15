@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API + LocalStorage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: 0.3s;
+            background-color: #121212;
+        }
+
+        /* Classe para o tema escuro */
+        .dark {
+            background: #121212;
+            color: white;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 10px 5px 10px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #frase {
+            margin-top: 20px;
+            font-size: 18px;
+            border-left: 4px solid #ccc; /* Detalhe visual para destacar a frase */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>API + LocalStorage</h1>
+    
+    <button onclick="trocarTema()">Trocar Tema</button>
+    <button onclick="buscarFrase()">Buscar Frase</button>
+
+    <p id="frase">Clique no botão para carregar a frase...</p>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
